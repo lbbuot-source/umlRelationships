@@ -1,0 +1,107 @@
+// 1. ASSOCIATION
+class Student {
+    String name = "Alex";
+}
+
+class Teacher {
+    void teach(Student student) {
+        System.out.println("Association: Teacher teaches " + student.name);
+    }
+}
+
+// 2. AGGREGATION
+class Player {
+    String name;
+
+    Player(String name) {
+        this.name = name;
+    }
+}
+
+class Team {
+    Player player;
+
+    Team(Player player) {
+        this.player = player;
+    }
+
+    void showPlayer() {
+        System.out.println("Aggregation: Team player is " + player.name);
+    }
+}
+
+// 3. COMPOSITION
+class Room {
+    void display() {
+        System.out.println("Composition: Room belongs to a House.");
+    }
+}
+
+class House {
+    private Room room;
+
+    House() {
+        room = new Room();
+    }
+
+    void showRoom() {
+        room.display();
+    }
+}
+
+// 4. INHERITANCE
+class Animal {
+    void eat() {
+        System.out.println("Inheritance: Animal is eating.");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Inheritance: Dog is barking.");
+    }
+}
+
+// 5. DEPENDENCY
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+}
+
+class Computer {
+    void calculate(Calculator calculator) {
+        int result = calculator.add(5, 3);
+        System.out.println("Dependency: Result is " + result);
+    }
+}
+
+// MAIN PROGRAM
+public class UMLRelationships {
+    public static void main(String[] args) {
+
+        // Association
+        Student student = new Student();
+        Teacher teacher = new Teacher();
+        teacher.teach(student);
+
+        // Aggregation
+        Player player = new Player("John");
+        Team team = new Team(player);
+        team.showPlayer();
+
+        // Composition
+        House house = new House();
+        house.showRoom();
+
+        // Inheritance
+        Dog dog = new Dog();
+        dog.eat();
+        dog.bark();
+
+        // Dependency
+        Calculator calculator = new Calculator();
+        Computer computer = new Computer();
+        computer.calculate(calculator);
+    }
+}
